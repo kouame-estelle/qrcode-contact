@@ -1,320 +1,325 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Isaac Bayoh - FuturAfric</title>
+
+    <!-- ✅ Lien vers Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
 
+      .card-container {
+        max-width: 450px;
+        width: 100%;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        animation: slideUp 0.6s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .header {
+        position: relative;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          /* voile sombre */ url("image/l'AI.png") center/cover no-repeat; /* ton image */
+        padding: 50px 30px;
+        text-align: center;
+        color: white;
+      }
+
+      .header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3); /* légère couche supplémentaire */
+        z-index: 1;
+      }
+
+      .profile-section {
+        position: relative;
+        display: flex;
+        flex-direction: column; /* empile les éléments verticalement */
+        justify-content: center; /* centre verticalement */
+        align-items: center; /* centre horizontalement */
+        z-index: 2; /* le texte passe au-dessus du voile */
+        text-align: center; /* centre le texte */
+      }
+
+      .profile-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid #d4af37;
+        background: url("image/Isaac\ bayoh.jpg") center/cover no-repeat;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      }
+
+      .name {
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* ajoute de la lisibilité */
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .title {
+        color: #f4d03f;
+        font-size: 20px;
+        font-weight: 700;
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+      }
+
+      .company {
+        color: #e0e0e0;
+        font-size: 18px;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      }
+      .content {
+        padding: 30px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        padding: 18px;
+        margin-bottom: 15px;
+        background: #e0e0e0;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        border: 2px solid transparent;
+      }
+
+      .contact-item:hover {
+        background: #fff;
+        border-color: #d4af37;
+        transform: translateX(5px);
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+      }
+
+      .icon-circle {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+        box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+        color: #1e1e1e;
+        font-size: 20px;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .contact-label {
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 3px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .contact-value {
+        font-size: 16px;
+        color: #333;
+        font-weight: 500;
+        word-break: break-word;
+      }
+
+      .action-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .btn {
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+        color: #1e1e1e;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+      }
+
+      .btn-secondary {
+        background: #1e1e1e;
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background: #2d2d2d;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .footer {
+        text-align: center;
+        padding: 20px;
+        background: #f5f5f5;
+        color: #888;
+        font-size: 12px;
+      }
+
+      .logo {
+        color: #d4af37;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      @media (max-width: 480px) {
         .card-container {
-            max-width: 450px;
-            width: 100%;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            animation: slideUp 0.6s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1e1e1e 0%, #3d3d3d 100%);
-            padding: 40px 30px;
-            text-align: center;
-            position: relative;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
-        }
-
-        .profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid #d4af37;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: #d4af37;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+          margin: 10px;
         }
 
         .name {
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .title {
-            color: #d4af37;
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .company {
-            color: #e0e0e0;
-            font-size: 18px;
-        }
-
-        .content {
-            padding: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            padding: 18px;
-            margin-bottom: 15px;
-            background: #f8f8f8;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            border: 2px solid transparent;
-        }
-
-        .contact-item:hover {
-            background: #fff;
-            border-color: #d4af37;
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
-        }
-
-        .icon-circle {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
-        }
-
-        .icon {
-            font-size: 20px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 3px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-value {
-            font-size: 16px;
-            color: #333;
-            font-weight: 500;
-            word-break: break-word;
+          font-size: 24px;
         }
 
         .action-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 25px;
+          grid-template-columns: 1fr;
         }
-
-        .btn {
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
-            color: #1e1e1e;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-        }
-
-        .btn-secondary {
-            background: #1e1e1e;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #2d2d2d;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: #f5f5f5;
-            color: #888;
-            font-size: 12px;
-        }
-
-        .logo {
-            color: #d4af37;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        @media (max-width: 480px) {
-            .card-container {
-                margin: 10px;
-            }
-            
-            .name {
-                font-size: 24px;
-            }
-            
-            .action-buttons {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="card-container">
-        <div class="header">
-            <div class="profile-section">
-                <div class="profile-image">👤</div>
-                <h1 class="name">Monsieur Isaac Bayoh</h1>
-                <p class="title">PDG</p>
-                <p class="company">FuturAfric</p>
+      <div class="header">
+        <div class="profile-section">
+          <div class="profile-image"></div>
+          <h1 class="name">Monsieur Isaac Bayoh</h1>
+          <p class="title">PDG</p>
+          <p class="company">FuturAfric</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <a href="mailto:info@futurafric.com" class="contact-item">
+          <div class="icon-circle"><i class="fa-solid fa-envelope"></i></div>
+          <div class="contact-info">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">info@futurafric.com</div>
+          </div>
+        </a>
+
+        <a href="tel:+2250700879212" class="contact-item">
+          <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+          <div class="contact-info">
+            <div class="contact-label">Téléphone (Travail)</div>
+            <div class="contact-value">+225 07 00 879 212</div>
+          </div>
+        </a>
+
+        <a href="http://futurafric.com" target="_blank" class="contact-item">
+          <div class="icon-circle"><i class="fa-solid fa-globe"></i></div>
+          <div class="contact-info">
+            <div class="contact-label">Site Web</div>
+            <div class="contact-value">futurafric.com</div>
+          </div>
+        </a>
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Riviera+Bonounin+Abidjan+Cocody+Côte+d'Ivoire"
+          target="_blank"
+          class="contact-item"
+        >
+          <div class="icon-circle">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Adresse</div>
+            <div class="contact-value">
+              Cocody,Bonoumin Abidjan Mall,Futurafric ia
             </div>
+          </div>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/company/futurafric"
+          target="_blank"
+          class="contact-item"
+        >
+          <div class="icon-circle"><i class="fa-brands fa-linkedin"></i></div>
+          <div class="contact-info">
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">FuturAfric</div>
+          </div>
+        </a>
+
+        <div class="action-buttons">
+          <a href="tel:+2250700879212" class="btn btn-primary">
+            <i class="fa-solid fa-phone"></i> Appeler
+          </a>
+          <button class="btn btn-secondary" onclick="saveContact()">
+            <i class="fa-solid fa-download"></i> Enregistrer
+          </button>
         </div>
+      </div>
 
-        <div class="content">
-            <a href="mailto:info@futurafric.com" class="contact-item">
-                <div class="icon-circle">
-                    <span class="icon">✉️</span>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-label">Email</div>
-                    <div class="contact-value">info@futurafric.com</div>
-                </div>
-            </a>
-
-            <a href="tel:+22507008792​12" class="contact-item">
-                <div class="icon-circle">
-                    <span class="icon">📞</span>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-label">Téléphone (Travail)</div>
-                    <div class="contact-value">+225 07 00 879 212</div>
-                </div>
-            </a>
-
-            <a href="http://futurafric.com" target="_blank" class="contact-item">
-                <div class="icon-circle">
-                    <span class="icon">🌐</span>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-label">Site Web</div>
-                    <div class="contact-value">futurafric.com</div>
-                </div>
-            </a>
-
-            <a href="https://www.google.com/maps/search/?api=1&query=Riviera+Bonounin+Abidjan+Cocody+Côte+d'Ivoire" target="_blank" class="contact-item">
-                <div class="icon-circle">
-                    <span class="icon">📍</span>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-label">Adresse</div>
-                    <div class="contact-value">Riviera Bonounin, Abidjan Cocody, Côte d'Ivoire</div>
-                </div>
-            </a>
-
-            <a href="https://www.linkedin.com/company/futurafric" target="_blank" class="contact-item">
-                <div class="icon-circle">
-                    <span class="icon">💼</span>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-label">LinkedIn</div>
-                    <div class="contact-value">FuturAfric</div>
-                </div>
-            </a>
-
-            <div class="action-buttons">
-                <a href="tel:+22507008792​12" class="btn btn-primary">
-                    <span>📞</span> Appeler
-                </a>
-                <button class="btn btn-secondary" onclick="saveContact()">
-                    <span>💾</span> Enregistrer
-                </button>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p class="logo">FUTURAFRIC</p>
-            <p>Carte de visite digitale</p>
-        </div>
+      <div class="footer">
+        <p class="logo">FUTURAFRIC</p>
+        <p>Carte de visite digitale</p>
+      </div>
     </div>
 
     <script>
-        function saveContact() {
-            const vcard = `BEGIN:VCARD
+      function saveContact() {
+        const vcard = `BEGIN:VCARD
 VERSION:3.0
 N:Bayoh;Isaac;Monsieur;;
 FN:Monsieur Isaac Bayoh
@@ -323,31 +328,20 @@ ORG:FuturAfric
 TEL;TYPE=WORK,VOICE:+225 07 00 879 212
 EMAIL:info@futurafric.com
 URL:http://futurafric.com
-ADR;TYPE=WORK:;;Riviera Bonounin, Abidjan Cocody, Côte d'Ivoire;;;;
+ADR;TYPE=WORK:;;Cocody,Bonoumin Abidjan Mall,Futurafric ia;;;;
 X-SOCIALPROFILE;TYPE=LINKEDIN:https://www.linkedin.com/company/futurafric
 END:VCARD`;
 
-            const blob = new Blob([vcard], { type: 'text/vcard' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'Isaac_Bayoh_FuturAfric.vcf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-        }
-
-        // Animation au chargement
-        document.querySelectorAll('.contact-item').forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                item.style.transition = 'all 0.5s ease';
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, 100 * index);
-        });
+        const blob = new Blob([vcard], { type: "text/vcard" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "Isaac_Bayoh_FuturAfric.vcf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
     </script>
-</body>
+  </body>
 </html>
